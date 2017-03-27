@@ -31,6 +31,7 @@ public class MainActivity extends Activity {
 
     int ran=0;
     public static int fetch=0;
+    public static int fetch2=0;
     RelativeLayout rl=null;
     RelativeLayout rl1=null;
     RelativeLayout rl2=null;
