@@ -22,7 +22,6 @@ public class Splash extends Activity {
     static ImageView iv5 = null;
     static ImageView iv6 = null;
     static ImageView iv7 = null;
-    static ImageView wel = null;
 
     //static ImageView iv1=null;
     //static ImageView iv2=null;
@@ -57,26 +56,7 @@ public class Splash extends Activity {
         iv5 = (ImageView) findViewById(R.id.iv5);
         iv6 = (ImageView) findViewById(R.id.iv6);
         iv7 = (ImageView) findViewById(R.id.iv7);
-        wel = (ImageView)findViewById(R.id.wel);
-                Animation wa = AnimationUtils.loadAnimation(getApplicationContext(), R.anim.show);
-        wel.startAnimation(wa);
-        wa.setAnimationListener(new AnimationListener() {
-
-            @Override
-            public void onAnimationStart(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationRepeat(Animation arg0) {
-                // TODO Auto-generated method stub
-
-            }
-
-            @Override
-            public void onAnimationEnd(Animation arg0) {
-                // TODO Auto-generated method stub
+       // here is animation code---
                 iv1.setBackgroundResource(R.drawable.blackt);
                 iv2.setBackgroundResource(R.drawable.blackr);
                 iv3.setBackgroundResource(R.drawable.blacky);
@@ -148,8 +128,8 @@ public class Splash extends Activity {
                                            }
                                        }
                 );
-            }
-        });
+
+
 
 
     }
