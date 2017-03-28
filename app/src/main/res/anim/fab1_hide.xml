@@ -11,7 +11,7 @@
         android:toXDelta="0%"
         android:toYDelta="0%"></translate>
 
-    <!--Fade Out-->
+    <!--Fade Out- -->
     <alpha
         android:duration="1000"
         android:fromAlpha="1.0"

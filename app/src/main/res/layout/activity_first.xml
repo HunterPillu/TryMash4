@@ -35,7 +35,9 @@
         android:src="@drawable/ic_menu"
         />
     <include layout="@layout/fab_layout" />
-</android.support.design.widget.CoordinatorLayout>    <!--
+</android.support.design.widget.CoordinatorLayout>
+    <!-- - -->
+    <!--
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
 
     android:layout_width="match_parent"

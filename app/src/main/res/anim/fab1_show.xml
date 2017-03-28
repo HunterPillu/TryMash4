@@ -22,7 +22,7 @@
         android:toXDelta="0%"
         android:toYDelta="0%"></translate>
 
-    <!--Fade In-->
+    <!--Fade In- -->
     <alpha
         android:duration="1000"
         android:fromAlpha="0.0"

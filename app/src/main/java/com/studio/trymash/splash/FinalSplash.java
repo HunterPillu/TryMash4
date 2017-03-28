@@ -32,7 +32,7 @@ public class FinalSplash extends Activity {
         setContentView(R.layout.activity_final_splash);
         song= MediaPlayer.create(FinalSplash.this, R.raw.ssound);
         song.start();
-        //====
+        //======
         Thread stimer=new Thread()
         {
             @Override
