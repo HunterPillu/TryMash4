@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,7 @@ import com.studio.trymash.R;
 import com.studio.trymash.helper.Mydb;
 import com.studio.trymash.utils.Constant;
 
-public class EndActivity extends Activity {
+public class EndActivity extends AppCompatActivity {
     static EditText eet = null;
     static Button sub = null;
     static int id = 0;

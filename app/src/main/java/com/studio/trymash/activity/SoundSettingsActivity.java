@@ -4,6 +4,7 @@ package com.studio.trymash.activity;
 import android.app.Activity;
 import android.graphics.Color;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -11,7 +12,7 @@ import android.widget.Button;
 
 import com.studio.trymash.R;
 
-public class SoundSettingsActivity extends Activity {
+public class SoundSettingsActivity extends AppCompatActivity {
     static Button b1=null,b2=null;
     @Override
     protected void onCreate(Bundle savedInstanceState) {

@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.view.Menu;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -17,7 +18,7 @@ import com.studio.trymash.R;
 import com.studio.trymash.helper.Mydb;
 import com.studio.trymash.utils.Constant;
 
-public class HighScoreActivity extends Activity {
+public class HighScoreActivity extends AppCompatActivity {
     static TableLayout tl = null;
     static TextView tv1 = null;
     static TextView tv2 = null;
