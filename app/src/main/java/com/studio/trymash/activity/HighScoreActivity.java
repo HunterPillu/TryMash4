@@ -13,34 +13,34 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.studio.trymash.helper.Mydb;
 import com.studio.trymash.R;
+import com.studio.trymash.helper.Mydb;
 import com.studio.trymash.utils.Constant;
 
 public class HighScoreActivity extends Activity {
-    static TableLayout tl=null;
-    static TextView tv1=null;
-    static TextView tv2=null;
-    static ImageView iv=null;
+    static TableLayout tl = null;
+    static TextView tv1 = null;
+    static TextView tv2 = null;
+    static ImageView iv = null;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_high_score);
-        tl=(TableLayout)findViewById(R.id.tl);
-        iv=(ImageView) findViewById(R.id.iv);
-        Mydb md=new Mydb(this, Constant.DB, null, 1);
-        SQLiteDatabase sqlte=md.getWritableDatabase();
-        Cursor cu=sqlte.rawQuery(Constant.SELECT_ALL_DATA_QUERY, null);
+        tl = (TableLayout) findViewById(R.id.tl);
+        iv = (ImageView) findViewById(R.id.iv);
+        Mydb md = Mydb.getDB(this);
+        SQLiteDatabase sqlte = md.getWritableDatabase();
+        Cursor cu = sqlte.rawQuery(Constant.SELECT_ALL_DATA_QUERY, null);
 
-        while(cu.moveToNext())
-        {
+        while (cu.moveToNext()) {
             //tv.setText(cu.getString(1));
             //Log.i("score is ",cu.getString(2));
-            TableRow tr=new TableRow(this);
+            TableRow tr = new TableRow(this);
             tl.addView(tr);
-            tv1=new TextView(this);
+            tv1 = new TextView(this);
             tv1.setText(cu.getString(1));
-            tv2=new TextView(this);
+            tv2 = new TextView(this);
             tv2.setText(cu.getString(2));
             tr.addView(tv1);
             tr.addView(tv2);

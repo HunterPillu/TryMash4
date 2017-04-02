@@ -49,7 +49,7 @@ public class FinalSplash extends Activity {
                 finally
                 {
                     MainActivity.mcount=0;
-                    MainActivity.level=3;
+               //     MainActivity.level=3;
                     Intent open=new Intent(FinalSplash.this, MainActivity.class);
                     startActivity(open);
                 }
@@ -164,6 +164,4 @@ public class FinalSplash extends Activity {
         song.release();
         finish();
     }
-
-
 }

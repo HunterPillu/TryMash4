@@ -14,6 +14,7 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.studio.trymash.R;
+import com.studio.trymash.helper.Mydb;
 import com.studio.trymash.utils.Constant;
 
 public class EndActivity extends Activity {
@@ -31,21 +32,17 @@ public class EndActivity extends Activity {
         eet = (EditText) findViewById(R.id.eet);
         sub = (Button) findViewById(R.id.sub);
         iv = (ImageView) findViewById(R.id.iv);
-        MainActivity.level = 0;
-        final SQLiteDatabase sqlte = openOrCreateDatabase(Constant.DB, MODE_PRIVATE, null);
+        //  MainActivity.level = 0;
+        Mydb db = Mydb.getDB(this);
+        final SQLiteDatabase sqlte = db.getWritableDatabase();
         Cursor cs = sqlte.rawQuery(Constant.SELECT_MIN_SCORE_QUERY, null);
         if (cs.moveToNext()) {
             if (MainActivity.a >= cs.getInt(1)) {
                 scr = cs.getInt(1);
                 id = cs.getInt(0);
-            /*////	Toast to1=Toast.makeText(EndActivity.this,"minimun score is '"+scr+"' and id is '"+id+"'" , 19000);
-                to1.show();////*/
-
-
                 eet.setVisibility(View.VISIBLE);
                 sub.setVisibility(View.VISIBLE);
             }
-
         }
         cs.close();
 
@@ -57,8 +54,6 @@ public class EndActivity extends Activity {
                 str = eet.getText().toString();
                 if (str != null) {
                     sqlte.execSQL("update rscore set name='" + str + "',score='" + MainActivity.a + "' where id='" + id + "'");
-		/*///	Toast t=Toast.makeText(EndActivity.this,"Score Updated Successfully", 10000);
-			t.show();///*/
                     Intent go = new Intent(getApplicationContext(), HighScoreActivity.class);
                     startActivity(go);
                 } else {

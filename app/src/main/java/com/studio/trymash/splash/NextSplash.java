@@ -46,7 +46,7 @@ public class NextSplash extends Activity {
                 finally
                 {
                     MainActivity.mcount=0;
-                    MainActivity.level=2;
+                  //  MainActivity.level=2;
                     Intent open=new Intent(NextSplash.this, MainActivity.class);
                     startActivity(open);
                 }
