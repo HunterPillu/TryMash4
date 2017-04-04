@@ -11,7 +11,7 @@
         android:layout_gravity="bottom|end"
         android:layout_margin="10dp"
         android:src="@drawable/ic_volume"
-        android:visibility="visible"
+        android:visibility="invisible"
         app:fabSize="mini"
      />
     <android.support.design.widget.FloatingActionButton

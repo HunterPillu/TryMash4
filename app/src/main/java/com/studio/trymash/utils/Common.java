@@ -48,9 +48,6 @@ class Common extends ImageView {
         cont = context;
         LinearLayout.LayoutParams layoutParams = new LinearLayout.LayoutParams(48, 48);
         setLayoutParams(layoutParams);
-        /*setImageResource(R.drawable.apple);
-        setY(0);
-		setX(120.0F);*/
         handle = new Handler();
         new Thread() {
             @Override
@@ -64,10 +61,6 @@ class Common extends ImageView {
                             public void run() {
                                 // TODO Auto-generated method stub
                                 setY(getY() + 2);
-                                if (MainActivity.fetch == 1) {
-                                    Toast t = Toast.makeText(cont, Constant.TIME_UP, Toast.LENGTH_SHORT);//////..........not working............///////
-                                    t.show();
-                                }
                             }
 
                         });
@@ -76,26 +69,12 @@ class Common extends ImageView {
                     }
                     try {
                         Thread.sleep(25);
-                       /* if (MainActivity.level == 0) {
-                            Thread.sleep(25);
-                            //MainActivity.iv.setBackgroundResource(R.drawable.l1blankbg);
-                        } else {
-                            if (MainActivity.level == 2) {
-                                Thread.sleep(25);
-                                //MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
-                            } else {
-                                Thread.sleep(30);
-                                //MainActivity.iv.setBackgroundResource(R.drawable.l3blankbg);
-                            }
-                        }*/
                     } catch (InterruptedException e) {
                         // TODO Auto-generated catch block
                         e.printStackTrace();
                     }
 
                 }
-
-//////////////////////From Hereeeeeeeeeeeeeeeeeeeee////////////////////////
 
                 if (MainActivity.selectedFruitArr.contains(Common.this)) {
                     handle.post(new Runnable() {
@@ -106,50 +85,16 @@ class Common extends ImageView {
                             MainActivity.selected = null;  //////////for removing select item//
                             if ((MainActivity.selectedFruitArr.size()) == 1) {
                                 MainActivity.iv.setBackgroundResource(R.drawable.bg11);
-                               /* if (MainActivity.level == 0) {
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l1bg11);
-                                } else {
-                                    if (MainActivity.level == 2) {
-                                        MainActivity.iv.setBackgroundResource(R.drawable.bg11);
-                                    } else {
-                                        MainActivity.iv.setBackgroundResource(R.drawable.l3bg11);
-                                    }
-                                }*/
                             }
                             if ((MainActivity.selectedFruitArr.size()) == 2) {
                                 MainActivity.iv.setBackgroundResource(R.drawable.bg22);
-                              /*  if (MainActivity.level == 2) {
-                                    MainActivity.iv.setBackgroundResource(R.drawable.bg22);
-                                } else {
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l3bg22);
-                                }*/
                             }
-                           /* if ((MainActivity.selectedFruitArr.size()) == 3) {
-                                if (MainActivity.level == 3) {
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l3bg33);
-                                }
-
-                                //MainActivity.iv.setImageDrawable(null);
-                            }*/
                             if ((MainActivity.selectedFruitArr.size()) == 0) {
                                 MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
                                 MainActivity.iv.setImageDrawable(null);
-                               /* if (MainActivity.level == 0) {
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l1blankbg);
-                                    MainActivity.iv.setImageDrawable(null);
-                                } else {
-                                    if (MainActivity.level == 2) {
-                                        MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
-                                        MainActivity.iv.setImageDrawable(null);
-                                    } else {
-                                        MainActivity.iv.setBackgroundResource(R.drawable.l3blankbg);
-                                        MainActivity.iv.setImageDrawable(null);
-                                    }
-                                }*/
                             }
                         }
                     });
-
                 }
                 handle.post(new Runnable() {
 
@@ -159,7 +104,6 @@ class Common extends ImageView {
                         Common.this.setVisibility(View.GONE);
                     }
                 });
-                //////new////////////////////////
             }
         }.start();
 
@@ -168,13 +112,9 @@ class Common extends ImageView {
                                @Override
                                public void onClick(View arg0) {
                                    // TODO Auto-generated method stub
-
                                    ImageView img = (ImageView) arg0;
                                    MainActivity.ssong = MediaPlayer.create(cont, R.raw.blop);
                                    MainActivity.ssong.start();
-                                   //Toast.makeText(cont, "Clicked "+img.getTag(), Toast.LENGTH_LONG).show();
-
-///////////////done..............................................//////////////////////////////////////////////////////			
 
                                    if (MainActivity.selected != null) {
                                        if (!(MainActivity.selected.equals(img.getTag().toString()))) {
@@ -183,16 +123,12 @@ class Common extends ImageView {
                                            MainActivity.tv.setText(Constant.SCORE + MainActivity.a);
 
                                            for (int i = 0; i < MainActivity.selectedFruitArr.size(); i++) {
-
                                                ImageView chImage = (ImageView) MainActivity.selectedFruitArr.get(i);
                                                chImage.setImageResource(Integer.parseInt(MainActivity.fruitsMap.get(MainActivity.selected).toString()));
-
                                            }
                                            MainActivity.selectedFruitArr.removeAll(MainActivity.selectedFruitArr);
                                            MainActivity.selected = img.getTag().toString();
-
                                            MainActivity.selectedFruitArr.add(img);
-
 
                                        } else {
                                            if (MainActivity.selected.equals(img.getTag().toString())) {
@@ -205,345 +141,27 @@ class Common extends ImageView {
 
                                    } else {
                                        MainActivity.selected = img.getTag().toString();
-
                                        if (!MainActivity.selectedFruitArr.contains(img)) {
                                            MainActivity.selectedFruitArr.add(img);
                                        }
-
-
                                    }
-///////////////done..............................................//////////////////////////////////////////////////////			
+
                                    int acount = MainActivity.selectedFruitArr.size();
                                    if (acount == 1) {
                                        ImageView let1 = (ImageView) MainActivity.selectedFruitArr.get(0);
                                        MainActivity.iv.setBackgroundResource(R.drawable.bg11);
-                   /* if (MainActivity.level == 0) {
-                        MainActivity.iv.setBackgroundResource(R.drawable.l1bg11);
-                    } else {
-                        if (MainActivity.level == 2) {
-                            MainActivity.iv.setBackgroundResource(R.drawable.bg11);
-                        } else {
-                            MainActivity.iv.setBackgroundResource(R.drawable.l3bg11);
-                        }
-                    }*/
-
-					/*if((let1.getTag().toString())=="apple")
-                            {
-						
-						MainActivity.iv.setImageResource(R.drawable.apple);
-							}
-					if((let1.getTag().toString())=="mango")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.shalu);
-					}
-					
-					if((let1.getTag().toString())=="Grapes")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.grapes);
-					}
-					if((let1.getTag().toString())=="strawberry")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.strawberry);
-					}
-					if((let1.getTag().toString())=="orange")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.orange);
-					}
-					if((let1.getTag().toString())=="pear")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.pear);
-					}
-					if((let1.getTag().toString())=="lichee")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.lichee);
-					}
-					if((let1.getTag().toString())=="anar")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.anar);
-					}*/
                                    }
                                    if (acount == 2) {
                                        ImageView let1 = (ImageView) MainActivity.selectedFruitArr.get(0);
                                        MainActivity.iv.setBackgroundResource(R.drawable.bg22);
-                  /*  if (MainActivity.level == 0) {
-                        MainActivity.iv.setBackgroundResource(R.drawable.l1bg22);
-                    } else {
-                        if (MainActivity.level == 2) {
-                            MainActivity.iv.setBackgroundResource(R.drawable.bg22);
-                        } else {
-                            MainActivity.iv.setBackgroundResource(R.drawable.l3bg22);
-                        }
-                    }*/
-
-				/*	if((let1.getTag().toString())=="apple")
-                            {
-						
-						MainActivity.iv.setImageResource(R.drawable.apple);
-							}
-					if((let1.getTag().toString())=="mango")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.shalu);
-					}
-					
-					if((let1.getTag().toString())=="Grapes")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.grapes);
-					}
-					if((let1.getTag().toString())=="strawberry")
-					{	
-				MainActivity.iv.setImageResource(R.drawable.strawberry);
-					}
-					if((let1.getTag().toString())=="orange")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.orange);
-					}
-					if((let1.getTag().toString())=="pear")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.pear);
-					}
-					if((let1.getTag().toString())=="lichee")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.lichee);
-					}
-					if((let1.getTag().toString())=="anar")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.anar);
-					}*/
                                    }
                                    if (acount == 3) {
                                        ImageView let1 = (ImageView) MainActivity.selectedFruitArr.get(0);
-                                       //MainActivity.iv.setBackgroundResource(R.drawable.bg33);
-/*Animation animn=AnimationUtils.loadAnimation(getContext(), R.anim.temp);
-
-					MainActivity.iv.startAnimation(animn);*/
-
                                        MainActivity.iv.setBackgroundResource(R.drawable.bg33);
-                   /* if (MainActivity.level == 2) {
-                        MainActivity.iv.setBackgroundResource(R.drawable.bg33);
-                    } else {
-                        MainActivity.iv.setBackgroundResource(R.drawable.l3bg33);
-                    }*/
-					/*if((let1.getTag().toString())=="apple")
-							{
-						
-						MainActivity.iv.setImageResource(R.drawable.apple);
-							}
-					if((let1.getTag().toString())=="mango")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.shalu);
-					}
-					
-					if((let1.getTag().toString())=="Grapes")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.grapes);
-					}
-					if((let1.getTag().toString())=="strawberry")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.strawberry);
-					}
-					if((let1.getTag().toString())=="orange")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.orange);
-					}
-					if((let1.getTag().toString())=="pear")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.pear);
-					}
-					if((let1.getTag().toString())=="lichee")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.lichee);
-					}
-					if((let1.getTag().toString())=="anar")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.anar);
-					}*/
-                                   }
-                                   if (acount == 4) {
-                                       ImageView let1 = (ImageView) MainActivity.selectedFruitArr.get(0);
-                                       MainActivity.iv.setBackgroundResource(R.drawable.l3bg44);
-					
-					/*if((let1.getTag().toString())=="apple")
-							{
-						
-						MainActivity.iv.setImageResource(R.drawable.apple);
-							}
-					if((let1.getTag().toString())=="mango")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.shalu);
-					}
-					
-					if((let1.getTag().toString())=="Grapes")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.grapes);
-					}
-					if((let1.getTag().toString())=="strawberry")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.strawberry);
-					}
-					if((let1.getTag().toString())=="orange")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.orange);
-					}
-					if((let1.getTag().toString())=="pear")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.pear);
-					}
-					if((let1.getTag().toString())=="lichee")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.lichee);
-					}
-					if((let1.getTag().toString())=="anar")
-					{
-				
-				MainActivity.iv.setImageResource(R.drawable.anar);
-					}*/
                                    }
                                    MainActivity.iv.setImageResource(Integer.parseInt(MainActivity.fruitsMap.get(MainActivity.selected).toString()));
 
                                    //////////////////////////////////////main logic\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-               /* if (MainActivity.level == 0) {
-                    if (MainActivity.selectedFruitArr.size() == 2) {
-                        MainActivity.selected = null;
-                        MainActivity.chImage1 = (ImageView) MainActivity.selectedFruitArr.get(0);
-                        MainActivity.chImage2 = (ImageView) MainActivity.selectedFruitArr.get(1);
-                        //MainActivity.chImage3=(ImageView) MainActivity.selectedFruitArr.get(2);
-
-                        Animation anim1 = AnimationUtils.loadAnimation(getContext(), R.anim.uniquesplash3anim);
-                        MainActivity.chImage1.startAnimation(anim1);
-                        MainActivity.chImage2.startAnimation(anim1);
-                        //MainActivity.chImage3.startAnimation(anim1);
-                        anim1.setAnimationListener(new AnimationListener() {
-                            @Override
-                            public void onAnimationStart(Animation arg0) {
-                                // TODO Auto-generated method stub
-                                MainActivity.iv.setBackgroundResource(R.drawable.l1bg22);
-                                MainActivity.chImage1.setImageResource(R.drawable.crush);
-                                MainActivity.chImage2.setImageResource(R.drawable.crush);
-                                //MainActivity.chImage3.setImageResource(R.drawable.crush);
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation arg0) {
-                                // TODO Auto-generated method stub
-
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation arg0) {
-                                // TODO Auto-generated method stub
-                                MainActivity.iv.setBackgroundResource(R.drawable.l1blankbg);
-                                MainActivity.iv.setImageDrawable(null);
-                                MainActivity.chImage1.setImageDrawable(null);
-                                MainActivity.chImage2.setImageDrawable(null);
-                                //MainActivity.chImage3.setImageDrawable(null);
-                            }
-                        });
-
-                        MainActivity.selectedFruitArr.removeAll(MainActivity.selectedFruitArr);
-                        MainActivity.csong = MediaPlayer.create(cont, R.raw.crushs);
-                        MainActivity.csong.start();
-                        MainActivity.mcount++;
-					*//*MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
-					MainActivity.iv.setImageDrawable(null);
-					MainActivity.aiv.setImageResource(R.drawable.finalarrow);*//*
-                        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.myanim);
-                        MainActivity.aiv.startAnimation(anim);
-                        anim.setAnimationListener(new AnimationListener() {
-
-                            @Override
-                            public void onAnimationStart(Animation arg0) {
-                                // TODO Auto-generated method stub
-
-                                MainActivity.aiv.setImageResource(R.drawable.finalarrow);
-                            }
-
-                            @Override
-                            public void onAnimationRepeat(Animation arg0) {
-                                // TODO Auto-generated method stub
-
-                            }
-
-                            @Override
-                            public void onAnimationEnd(Animation arg0) {
-                                // TODO Auto-generated method stub
-                                MainActivity.aiv.setImageDrawable(null);
-                                MainActivity.a = MainActivity.a + 20;
-                                if (MainActivity.mcount == 1) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.one);
-                                }
-                                if (MainActivity.mcount == 2) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.two);
-                                    //MainActivity.tv.setText("Score : 20");
-                                }
-                                if (MainActivity.mcount == 3) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.three);
-                                    //MainActivity.tv.setText("Score : 30");
-
-
-                                    //	MainActivity.act.finish();
-                                }
-                                if (MainActivity.mcount == 4) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.four);
-                                    //MainActivity.tv.setText("Score : 30");
-                                }
-                                if (MainActivity.mcount == 5) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.five);
-                                    //MainActivity.tv.setText("Score : 30");
-                                }
-                                if (MainActivity.mcount == 6) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.six);
-                                    //MainActivity.tv.setText("Score : 30");
-                                }
-                                if (MainActivity.mcount == 7) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.seven);
-                                    //MainActivity.tv.setText("Score : 30");
-                                }
-                                if (MainActivity.mcount == 8) {
-                                    MainActivity.buciv.setBackgroundResource(R.drawable.eight);
-                                    //MainActivity.tv.setText("Score : 30");
-                                    if (MainActivity.level == 0) {
-                                        //MainActivity.bgsong.release();
-                                        Toast t = Toast.makeText(cont, Constant.FIRST_LEVEL_COMPLETED, Toast.LENGTH_SHORT);
-                                        t.show();
-                                        Intent in1 = new Intent(cont, NextSplash.class);
-                                        in1.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                        cont.startActivity(in1);
-                                        MainActivity.act.finish();
-                                    }
-                                }
-                                MainActivity.tv.setText(Constant.SCORE + MainActivity.a);
-
-                            }
-                        });
-                    }
-                } else {
-                    if (MainActivity.level == 2) {*/
 
                                    if (MainActivity.selectedFruitArr.size() == 3) {
                                        MainActivity.selected = null;
@@ -586,9 +204,6 @@ class Common extends ImageView {
                                        MainActivity.csong = MediaPlayer.create(cont, R.raw.crushs);
                                        MainActivity.csong.start();
                                        MainActivity.mcount++;
-					/*MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
-					MainActivity.iv.setImageDrawable(null);
-					MainActivity.aiv.setImageResource(R.drawable.finalarrow);*/
                                        Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.myanim);
                                        MainActivity.aiv.startAnimation(anim);
                                        anim.setAnimationListener(new AnimationListener() {
@@ -596,7 +211,6 @@ class Common extends ImageView {
                                            @Override
                                            public void onAnimationStart(Animation arg0) {
                                                // TODO Auto-generated method stub
-
                                                MainActivity.aiv.setImageResource(R.drawable.finalarrow);
                                            }
 
@@ -620,10 +234,6 @@ class Common extends ImageView {
                                                }
                                                if (MainActivity.mcount == 3) {
                                                    MainActivity.buciv.setBackgroundResource(R.drawable.three);
-                                                   //MainActivity.tv.setText("Score : 30");
-
-
-                                                   //	MainActivity.act.finish();
                                                }
                                                if (MainActivity.mcount == 4) {
                                                    MainActivity.buciv.setBackgroundResource(R.drawable.four);
@@ -646,14 +256,6 @@ class Common extends ImageView {
                                                    //MainActivity.tv.setText("Score : 30");
 
                                                    if (MainActivity.level == 2) {
-
-                                          /*  Toast t1 = Toast.makeText(cont, Constant.SECOND_LEVEL_COMPLETED, Toast.LENGTH_SHORT);
-                                            t1.show();
-                                            Intent nin = new Intent(cont, FinalSplash.class);
-                                            nin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            cont.startActivity(nin);
-                                            MainActivity.act.finish();*/
-
                                                        Toast t1 = Toast.makeText(cont, Constant.GAME_OVER, Toast.LENGTH_SHORT);
                                                        t1.show();
                                                        Intent nin = new Intent(cont, EndActivity.class);
@@ -662,204 +264,40 @@ class Common extends ImageView {
                                                        MainActivity.act.finish();
                                                    }
                                                }
-								
-								
-								/*if(MainActivity.mcount>=11)
-								{
-									Toast t=Toast.makeText(cont, "Sorry!!!! your bucket is going to Fill",15000);
-									t.show();
-									//MainActivity.buciv.setImageResource(R.drawable.fillb);	
-									//MainActivity.tv.setText("Score : 30");
-								}*/
-                                               //MainActivity.a=MainActivity.a+20;
                                                MainActivity.tv.setText(Constant.SCORE + MainActivity.a);
-
                                            }
                                        });
 
-                                   }    //MainActivity.buciv.setImageResource(R.drawable.buc);
-                 /*   } else {
-                        if (MainActivity.selectedFruitArr.size() == 4) {
-                            MainActivity.selected = null;
-                            MainActivity.chImage1 = (ImageView) MainActivity.selectedFruitArr.get(0);
-                            MainActivity.chImage2 = (ImageView) MainActivity.selectedFruitArr.get(1);
-                            MainActivity.chImage3 = (ImageView) MainActivity.selectedFruitArr.get(2);
-                            MainActivity.chImage4 = (ImageView) MainActivity.selectedFruitArr.get(3);
+                                   }
 
-
-                            Animation anim1 = AnimationUtils.loadAnimation(getContext(), R.anim.splash3anim);
-                            MainActivity.chImage1.startAnimation(anim1);
-                            MainActivity.chImage2.startAnimation(anim1);
-                            MainActivity.chImage3.startAnimation(anim1);
-                            MainActivity.chImage4.startAnimation(anim1);
-
-                            anim1.setAnimationListener(new AnimationListener() {
-                                @Override
-                                public void onAnimationStart(Animation arg0) {
-                                    // TODO Auto-generated method stub
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l3bg44);
-
-
-                                    MainActivity.chImage1.setImageResource(R.drawable.crush);
-                                    MainActivity.chImage2.setImageResource(R.drawable.crush);
-                                    MainActivity.chImage3.setImageResource(R.drawable.crush);
-                                    MainActivity.chImage4.setImageResource(R.drawable.crush);
-
-
-                                }
-
-                                @Override
-                                public void onAnimationRepeat(Animation arg0) {
-                                    // TODO Auto-generated method stub
-
-                                }
-
-                                @Override
-                                public void onAnimationEnd(Animation arg0) {
-                                    // TODO Auto-generated method stub
-                                    MainActivity.iv.setBackgroundResource(R.drawable.l3blankbg);
-                                    MainActivity.iv.setImageDrawable(null);
-                                    MainActivity.chImage1.setImageDrawable(null);
-                                    MainActivity.chImage2.setImageDrawable(null);
-                                    MainActivity.chImage3.setImageDrawable(null);
-                                    MainActivity.chImage4.setImageDrawable(null);
-
-                                }
-                            });
-
-                            MainActivity.selectedFruitArr.removeAll(MainActivity.selectedFruitArr);
-                            MainActivity.csong = MediaPlayer.create(cont, R.raw.crushs);
-                            MainActivity.csong.start();
-                            MainActivity.mcount++;
-								*//*MainActivity.iv.setBackgroundResource(R.drawable.blankbg);
-								MainActivity.iv.setImageDrawable(null);
-								MainActivity.aiv.setImageResource(R.drawable.finalarrow);*//*
-                            Animation anim = AnimationUtils.loadAnimation(getContext(), R.anim.myanim);
-                            MainActivity.aiv.startAnimation(anim);
-                            anim.setAnimationListener(new AnimationListener() {
-
-                                @Override
-                                public void onAnimationStart(Animation arg0) {
-                                    // TODO Auto-generated method stub
-
-                                    MainActivity.aiv.setImageResource(R.drawable.finalarrow);
-                                }
-
-                                @Override
-                                public void onAnimationRepeat(Animation arg0) {
-                                    // TODO Auto-generated method stub
-
-                                }
-
-                                @Override
-                                public void onAnimationEnd(Animation arg0) {
-                                    // TODO Auto-generated method stub
-                                    MainActivity.aiv.setImageDrawable(null);
-                                    MainActivity.a = MainActivity.a + 20;
-                                    if (MainActivity.mcount == 1) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.one);
-                                    }
-                                    if (MainActivity.mcount == 2) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.two);
-                                        //MainActivity.tv.setText("Score : 20");
-                                    }
-                                    if (MainActivity.mcount == 3) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.three);
-                                        //MainActivity.tv.setText("Score : 30");
-
-
-                                        //	MainActivity.act.finish();
-                                    }
-                                    if (MainActivity.mcount == 4) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.four);
-                                        //MainActivity.tv.setText("Score : 30");
-                                    }
-                                    if (MainActivity.mcount == 5) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.five);
-                                        //MainActivity.tv.setText("Score : 30");
-                                    }
-                                    if (MainActivity.mcount == 6) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.six);
-                                        //MainActivity.tv.setText("Score : 30");
-                                    }
-                                    if (MainActivity.mcount == 7) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.seven);
-                                        //MainActivity.tv.setText("Score : 30");
-                                    }
-                                    if (MainActivity.mcount == 8) {
-                                        MainActivity.buciv.setBackgroundResource(R.drawable.eight);
-                                        //MainActivity.tv.setText("Score : 30");
-
-                                        //making 2nd level as final ,changing 3 to 2
-                                        if (MainActivity.level == 2) {
-                                            Toast t1 = Toast.makeText(cont, Constant.GAME_OVER, Toast.LENGTH_SHORT);
-                                            t1.show();
-                                            Intent nin = new Intent(cont, EndActivity.class);
-                                            nin.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
-                                            cont.startActivity(nin);
-                                            MainActivity.act.finish();
-                                        }
-
-                                    }
-											
-											
-											*//*if(MainActivity.mcount>=11)
-											{
-												Toast t=Toast.makeText(cont, "Sorry!!!! your bucket is going to Fill",15000);
-												t.show();
-												//MainActivity.buciv.setImageResource(R.drawable.fillb);	
-												//MainActivity.tv.setText("Score : 30");
-											}*//*
-                                    //MainActivity.a=MainActivity.a+20;
-                                    MainActivity.tv.setText(Constant.SCORE + MainActivity.a);
-
-                                }
-                            });
-                        }
-
-                    }
-                    }*/
                                    ///////////////////////////////////////main logic////////////////////////////////////////////////////////////
                                    if (img.getTag() == Constant.APPLE) {
                                        //String astr=img.getTag().toString();
                                        setImageResource(R.drawable.smallappbck);
-
-                                       //MainActivity.iv.setImageResource(R.drawable.apple);
-
-
-                                   }
-
-                                   if (img.getTag() == Constant.ORANGE) {
+                                   } else if (img.getTag() == Constant.ORANGE) {
                                        setImageResource(R.drawable.orangebackground);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.STRAWBERRY) {
+                                   } else if (img.getTag() == Constant.STRAWBERRY) {
                                        setImageResource(R.drawable.strawberrybackground);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.GRAPES) {
+                                   } else if (img.getTag() == Constant.GRAPES) {
                                        setImageResource(R.drawable.grapesbackground);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.MANGO) {
+                                   } else if (img.getTag() == Constant.MANGO) {
                                        setImageResource(R.drawable.mangobackground);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.PEAR) {
+                                   } else if (img.getTag() == Constant.PEAR) {
                                        setImageResource(R.drawable.pearback);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.LICHEE) {
+                                   } else if (img.getTag() == Constant.LICHEE) {
                                        setImageResource(R.drawable.licheeback);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
-                                   }
-                                   if (img.getTag() == Constant.ANAR) {
+                                   } else if (img.getTag() == Constant.ANAR) {
                                        setImageResource(R.drawable.anarback);
                                        //MainActivity.iv.setImageResource(R.drawable.apple);
                                    }
                                }
                            }
-
         );
     }
 }
